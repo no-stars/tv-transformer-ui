@@ -1,13 +1,13 @@
-FROM node:lts-alpine
+FROM node:14-alpine3.15
 
 RUN npm install -g http-server
 
 WORKDIR /usr/src/app
 
-RUN apk add g++ make python
+RUN apk add g++ make python2
 
 COPY package*.json ./
-RUN npm install
+RUN npm ci
 
 COPY . .
 
